@@ -1,0 +1,57 @@
+<template name="Ontology">
+  <br>
+
+  <div id="wiredComponents" style="padding-bottom: 200px;"></div>
+
+  {{#each conceptLabels}}
+    {{> ConceptLabel concept=this}}
+  {{/each}}
+  {{>Concept concept=activeConcept}}
+
+</template>
+
+
+
+<template name="WiredOntology">
+  <div id="chooseConcept"></div>
+</template>
+
+<template name="WiredAllOntology">
+
+</template>
+
+<template name="WiredChildOntology">
+</template>
+
+
+<template name="OntologyLanguage">
+  <div id="selectLanguage"></div>
+</template>
+
+
+<template name="Concept">
+  <div id="chooseConcept">
+  </div>
+    {{#each items}}
+      <p>{{language}}: {{term}}</p>
+    {{/each}}
+</template>
+
+<template name="ConceptLabel">
+  <div id="conceptLabel_{{randomconceptlabelid}}"></div>
+</template>
+
+
+<template name="svgconcept">
+  <div id="svgconcept"></div>
+</template>
+
+<template name="svgannotate">
+  <h1 style="margin: auto;margin-left: 30%;font-size:60px;">Concept Annotation</h1><br><br><br>
+  <div id="svgannotate"></div>
+</template>
+
+<template name="chloropleth">
+  <h1 style="margin: auto;margin-left: 35%;font-size:80px !important;">Mapped Statistics</h1><br><br><br>
+  <div id="chloropleth"></div>
+</template>

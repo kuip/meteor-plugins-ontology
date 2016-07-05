@@ -1,0 +1,44 @@
+.WiredMixedDiv {
+  padding-bottom: 50px;
+}
+
+.roleLabel {
+  padding-bottom: 0 !important;
+}
+
+.WiredLabel {
+  padding-bottom: 0 !important;
+}
+
+.conceptLabel {
+  padding-bottom: 0 !important;
+}
+
+body {
+  font-size: 30px !important;
+  margin-left: 10px;
+}
+
+.WiredSelect {
+  font-size: 40px !important;
+}
+
+button {
+  font-size: 25px !important;
+  background-color: #FFF;
+}
+
+input {
+  font-size: 25px !important;
+  min-height: 60px !important;
+}
+
+td {
+  padding-right: 70px;
+}
+
+/*
+.svgDiv {
+      float: left;
+    margin-right: 30px;
+}*/

@@ -1,0 +1,87 @@
+<head>
+  <title>Meteor Plugins</title>
+  <meta name="description" content="Meteor Plugins. Changing Meteor packages from a web interface">
+  <meta name="keywords" content="Meteor, Meteor.JS, Web Development">
+  <meta name="author" content="Kuip Limited">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<template name="Plugins">
+  <div class="plugins_title_div">
+    <a href="https://github.com/oro8oro/meteor-plugins" target="_blank">
+      <img class="plugins_avatar" src="/images/plugins-logo2.svg">
+    </a>
+    <span class="plugins_title">Meteor Plugins</span>
+  </div>
+    <br><br>
+  <!--<div class="plugins_halflayout">{{> PluginsChooser}}</div>
+  <div class="plugins_halflayout">{{> PluginsServer}}</div>-->
+  {{> PluginsTabs}}
+</template>
+
+
+
+<template name="PluginsChooser">
+  {{#each choices}}
+      <div>
+        {{#if isActive}}
+          {{#if isRemovable}}
+            <img class="plugins_icon plugins_cursor plugins_toggle" src="/images/check.svg">
+          {{else}}
+            <img class="plugins_icon plugins_disabled" src="/images/check.svg">
+          {{/if}}
+        {{else}}
+            <img class="plugins_icon plugins_cursor plugins_toggle" src="/images/empty-check.svg">
+        {{/if}}
+
+        <a href="{{adminroute}}" target="_blank">
+          <img class="plugins_icon" src="/images/admin.svg">
+        </a>
+
+        <a href={{repository}} target="_blank">
+          {{#if icon}}
+            <img class="plugins_icon" src="{{icon}}">
+          {{else}}
+            <img class="plugins_icon" src="/images/plugins.svg">
+          {{/if}}
+        </a>
+
+        <b>{{title}}</b> {{description}}  
+      </div>
+    {{/each}}
+    <br>
+    <img class="plugins_avatar plugins_cursor plugins_submit" src="/images/refresh.svg">
+    {{#if waiting}}
+      {{> Loading}}
+    {{/if}}
+</template>
+
+
+<template name="PluginsServer">
+  <iframe frameborder="0" src="http://192.168.1.104:3500/" width="100%" height="100%"></iframe>
+</template>
+
+<template name="Loading">
+  <img class="plugins_avatar-large plugins_loading" src="/images/refresh-simple.svg">
+</template>
+
+<template name="PluginsTabs">
+  <div class="tabs">
+    <input type="radio" name="tabs" id="tab1" checked >
+    <label class="tablabel" for="tab1">
+      <img class="plugins_icon" src="/images/plugins-logo2.svg"><span>Local</span>
+    </label>
+ 
+    <input type="radio" name="tabs" id="tab2">
+    <label class="tablabel" for="tab2">
+      <img class="plugins_icon" src="/images/plugins-server.svg"><span>Server</span>
+    </label>
+ 
+    <div id="tab-content1" class="tab-content">
+      {{> PluginsChooser}}
+    </div>
+    <div id="tab-content2" class="tab-content">
+      {{> PluginsServer}}
+    </div>
+  </div>
+</template>

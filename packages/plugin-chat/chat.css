@@ -1,0 +1,46 @@
+#chats {
+  display: flex;
+}
+
+.container {
+  
+}
+
+.chatcontainer {
+  border: #000000;
+  border-style: solid;
+  border-width: 1px;
+  margin-bottom: 70px;
+  position: relative;
+}
+
+.smallchat {
+  width: 300px;
+  height: 200px;
+}
+
+.bigchat {
+  width: 300px;
+  height: 460px;
+}
+
+.chatinput {
+  position:absolute;
+  bottom:0px;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.messageinput {
+  width: 98%;
+}
+
+.submitmessageinput {
+  width:100%
+}
+
+.msgInfo {
+  position: absolute;
+  right: 0;
+}

@@ -1,0 +1,26 @@
+<head>
+  <title>devI</title>
+    <script type="text/x-mathjax-config;executed=true">
+  MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [["$","$"],["\\(","\\)"]],
+        processEscapes: true
+    },
+    skipStartupTypeset: true
+  });
+</script>
+    <script type="text/javascript"
+            src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG">
+    </script>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="/bower_components/lodash/lodash.js"></script>
+    <script src="/bower_components/jquery.splitter/js/jquery.splitter-0.15.0.js"></script>
+    <link href="/bower_components/jquery.splitter/css/jquery.splitter.css" rel="stylesheet"/>
+    <script src="/bower_components/nomnoml/dist/nomnoml.js"></script>
+    <script src="/bower_components/require/build/require.min.js"></script>
+</head>
+
+<template name="ApplicationLayout">
+	<!--{{> forkme}}-->
+  {{> Template.dynamic template=main}}
+</template>

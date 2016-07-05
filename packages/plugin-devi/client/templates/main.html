@@ -1,0 +1,78 @@
+<template name="main">
+    <div class="container full-height">
+        <div class="row upper">
+            <div class="col-xs-3 full-height">
+                {{> docList}}
+            </div>
+            <div class="col-xs-9 editor-container full-height" id="cont1">
+                {{> editor}}
+            </div>
+            <script>
+                var pos1 = "40%"
+                $('#cont1').width("100%").height("100%").split({orientation:'vertical', limit:2, position: pos1});
+            </script>
+        </div>
+    </div>
+</template>
+
+<template name="docList">
+    <div id="list">
+    {{#each documents}}
+    {{> docItem}}
+    {{/each}}
+   | <button class="btn btn-warning">+</button>
+</div>
+
+</template>
+
+<template name="docItem">
+
+        | <a href="#" class="{{#if current}}active{{/if}}">{{title}}</a>
+
+</template>
+
+<template name="editor">
+    <div id="ed">
+    {{#with docid}}
+        {{> docTitle this}}
+        {{#if cm}}
+                {{> sharejsCM docid=this onRender=configCM id="editor"}}
+        {{/if}}
+    {{/with}}
+    </div>
+   {{> prev}}
+</template>
+
+<template name="prev">
+    <div id="prev"  class="tex2jax_process">
+        <select>
+            <option value="">css</option>
+            <option value="">md</option>
+            <option value=""></option>
+        </select>
+        <iframe seamless='seamless' frameBorder="0" src="/html.html" style="height:97%;width:100%"></iframe>
+    </div>
+</template>
+
+<template name="docTitle">
+    <div class="navbar navbar-default flex">
+        <form class="navbar-form pull-left">
+            <input class="form-control" type="text" name="title" value="{{title}}">
+            <button class="btn btn-danger btn-small delete">Delete</button>
+            <button class="btn btn-danger btn-small rawcode">Raw</button>
+            <button class="btn btn-danger btn-small preview">Preview</button>
+        </form>
+        {{#if permission}}
+            <select id="changePermissions">
+                <option value="{{permissons}}">{{permission}}</option>
+                {{#if Hequal permission 'public'}}
+                    <option value="private">private</option>
+                {{else}}
+                    <option value="public">public</option>
+                {{/if}}
+            </select>
+            {{#if Hequal permission 'private'}}
+            {{/if}}
+        {{/if}}
+    </div>
+</template>

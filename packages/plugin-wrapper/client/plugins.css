@@ -1,0 +1,203 @@
+html, body {
+  font-family: sans-serif;
+  width: 99%;
+  height: 100%;
+}
+
+#__blaze-root {
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.plugins_active {
+  background-color: #3B8623;
+}
+
+.plugins_inactive {
+  background-color: #A3A3A3
+}
+
+.plugins_disabled {
+  opacity: 0.5;
+}
+
+.plugins_icon {
+  width: 30px;
+}
+
+.plugins_cursor {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.plugins_avatar {
+  width: 60px;
+}
+
+.plugins_title_div {
+  text-align: center;
+  padding-top: 40px;
+}
+
+.plugins_title {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.plugins_avatar-large {
+  width: 100px;
+}
+
+.plugins_loading {
+  opacity:0.2;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  top: 0;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  -webkit-animation:spin 0.9s linear infinite;
+  -moz-animation:spin 0.9s linear infinite;
+  animation:spin 0.9s linear infinite;
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+
+
+
+.tabs {
+    width: 100%;
+    height: 100%;
+    float: none;
+    list-style: none;
+    padding: 0;
+    margin: 75px auto;
+}
+ 
+.tabs:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+ 
+.tabs input[type=radio] {
+    display:none;
+}
+ 
+.tabs .tablabel {
+    display: block;
+    float: left;
+    width: 50%;
+ 
+    color: #ccc;
+    font-size: 30px;
+    font-weight: normal;
+    text-decoration: none;
+    text-align: center;
+    line-height: 2;
+ 
+    cursor: pointer;
+    box-shadow: inset 0 4px #ccc;
+    border-bottom: 4px solid #ccc;
+ 
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+  
+.tabs .tablabel span {
+    display: none;
+}
+ 
+.tabs .tablabel i {
+    padding: 5px;
+    margin-right: 0;
+}
+ 
+.tabs .tablabel:hover {
+    color: #000000;
+    box-shadow: inset 0 4px #000000;
+    border-bottom: 4px solid #000000;
+}
+ 
+.tab-content {
+    display: none;
+    width: 100%;
+    height: 100%;
+    float: left;
+    padding: 15px;
+    box-sizing: border-box;
+  
+    background-color:#ffffff;
+}
+
+
+
+.tab-content * {
+ 
+    -webkit-animation: scale 0.7s ease-in-out;
+    -moz-animation: scale 0.7s ease-in-out;
+    animation: scale 0.7s ease-in-out;
+}
+/*not good for our svgs*/
+ /*
+@keyframes scale {
+ 
+  0% { 
+    transform: scale(0.9);
+    opacity: 0;
+    }
+ 
+  50% {
+    transform: scale(1.01);
+    opacity: 0.5;
+    }
+ 
+  100% { 
+    transform: scale(1);
+    opacity: 1;
+  }
+ 
+}
+*/
+
+
+
+.tabs [id^="tab"]:checked + .tablabel {
+    background: #FFF;
+    box-shadow: inset 0 4px #000000;
+    border-bottom: 4px solid #000000;
+    color: #000000;
+}
+ 
+#tab1:checked ~ #tab-content1,
+#tab2:checked ~ #tab-content2,
+#tab3:checked ~ #tab-content3 {
+    display: block;
+}
+
+
+
+@media (min-width: 768px) {   
+    .tabs i {
+        padding: 5px;
+        margin-right: 10px;
+    }
+ 
+    .tabs .tablabel span {
+        display: inline-block;
+    }
+ 
+    .tabs {
+
+   margin: 50px auto;
+    }
+}

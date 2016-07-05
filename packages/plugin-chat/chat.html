@@ -1,0 +1,68 @@
+<template name="Chats">
+  <div id="selectChats" style="width:300px;"></div>
+  <div id="chats">
+    {{#each chat}}
+      {{> Chat data}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="Chat">
+  {{> Template.dynamic template=template data=data}}
+</template>
+
+<template name="ChatSummary">
+  {{#with doc}}
+    <div class="container">
+      <p>{{_id}} - participants: {{participants}} - patient: {{patient}}</p>
+      <a href="/chat/{{_id}}">
+        <div class="chatcontainer smallchat">
+          {{> Messages data}}
+        </div>
+      </a>
+    </div>
+  {{/with}}
+</template>
+
+<template name="ChatFull">
+  {{#with doc}}
+    <div id="selectUser_{{_id}}"></div>
+    <div class="container">
+      <p>{{_id}} - participants: {{participants}} - patient: {{patient}}</p>
+      <div class="chatcontainer bigchat">
+        {{> Messages data}}
+        <div class="chatinput" id="ChatInput_{{_id}}"></div>
+      </div>
+    </div>
+  {{/with}}
+</template>
+
+
+<template name="ChatInput">
+  <div class="ui fluid chatinput">
+    <form class="submitmessageinput">
+      <input type="text" placeholder="..." class="messageinput">
+    </form>
+  </div>
+</template>
+
+
+
+<template name="Messages">
+  <div id="selectMessages"></div>
+  {{#each message}}
+    {{> Message doc=this}}
+  {{/each}}
+  <a id="scrolldownid" name="scrolldown"></a>
+</template>
+
+
+<template name="Message">
+  <div id="selectMessage"></div>
+  {{#with doc}}
+    <div id="message_{{_id}}">
+      <span>{{message}}</span>
+      <span class="msgInfo">{{user}}</span>
+    </div>
+  {{/with}}
+</template>

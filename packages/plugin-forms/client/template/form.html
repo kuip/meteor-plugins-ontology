@@ -1,0 +1,299 @@
+<template name="FormGroups">
+  <div id="addFormGroup"></div>
+</template>
+
+<template name="FormGroup">
+</template>
+
+<template name="Forms">
+
+  <div class="tabs">
+
+    <input type="radio" name="tabs" id="tab0" checked >
+    <label class="tablabel" for="tab0">
+      <span>Form Groups</span>
+    </label>
+
+    <input type="radio" name="tabs" id="tab1">
+    <label class="tablabel" for="tab1">
+      <span>Forms</span>
+    </label>
+ 
+    <input type="radio" name="tabs" id="tab2">
+    <label for="tab2" class="tablabel">
+      <span>SubForms</span>
+    </label>
+
+    <input type="radio" name="tabs" id="tab3">
+    <label for="tab3" class="tablabel">
+      <span>Fields</span>
+    </label>
+
+    <div id="tab-content0" class="tab-content">
+      {{> FormGroupTab}}
+    </div>
+
+    <div id="tab-content1" class="tab-content">
+      {{> FormTab}}
+    </div>
+
+    <div id="tab-content2" class="tab-content">
+      {{> SubFormTab}}
+    </div>
+
+    <div id="tab-content3" class="tab-content">
+      {{> FieldTab}}
+    </div>
+
+  </div>
+</template>
+
+
+<template name="FormGroupTab">
+
+  <table class="table table-striped table-bordered table-hover table-condensed">
+    <thead>
+      <tr>
+        <th>Concept</th>
+        <th>Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each item}}
+        <tr>
+          <td>{{concept}}</td>
+          <td><button class="addFormButton" data-id={{_id}}>+ Form</button></td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  {{#if addFormS}}
+    {{> addForm data}}
+  {{/if}}
+
+  <br><br>
+  <p>Add Form Group</p>
+  <div id="addFormGroup"></div>
+  <br><br>
+
+
+</template>
+
+
+<template name="FormTab">
+
+  <table class="table table-striped table-bordered table-hover table-condensed">
+    <thead>
+      <tr>
+        <th>Concept</th>
+        <th>Form Group</th>
+        <th>Ordering</th>
+        <th>Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each item}}
+        <tr>
+          <td>{{concept}}</td>
+          <td>{{formGroup}}</td>
+          <td>{{ordering}}</td>
+          <td>
+            <button class="addSubFormButton" data-id={{_id}}>+ SubForm</button>
+            <button class="addSubFormSchemaButton" data-id={{_id}}>+ schema</button>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  {{#if addSubFormS}}
+    {{> addSubForm data1}}
+  {{/if}}
+  {{#if addSubFormSchemaS}}
+    {{> addSubFormSchema data2}}
+  {{/if}}
+
+</template>
+
+<template name="SubFormTab">
+
+  <table class="table table-striped table-bordered table-hover table-condensed">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Concept</th>
+        <th>Form</th>
+        <th>Ordering</th>
+        <th>Schema</th>
+        <th>Live</th>
+        <th>Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each item}}
+        <tr>
+          {{> SubFormTable}}
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  {{#if addFieldS}}
+    {{> addField data}}
+  {{/if}}
+
+  <div id="showSubFormDataTable"></div>
+  <div id="editSubFormData"></div>
+
+</template>
+
+<template name="FieldTab">
+
+  <table class="table table-striped table-bordered table-hover table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Label</th>
+        <th>SubForm</th>
+        <th>Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each item}}
+        <tr>
+          {{> FieldTable}}
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  {{#if editFieldS}}
+    {{> editField data}}
+  {{/if}}
+
+</template>
+
+
+<template name="addForm">
+  <div id="addForm"></div>
+    <!--{{> quickForm collection=collection id="insertForm" type="insert" omitFields="formGroup"}}-->
+</template>
+
+<template name="editForm">
+  {{> quickForm collection=collection id="updateForm" type="update" doc=doc}}
+</template>
+
+<template name="addSubForm">
+  <div id="addSubForm"></div>
+</template>
+<template name="addSubFormSchema">
+  <div id="addSubFormSchema"></div>
+</template>
+
+<template name="editSubForm">
+  {{> quickForm collection=collection id="updateSubForm" type="update" doc=doc}}
+</template>
+
+
+<template name="addField">
+    <!--{{> quickForm collection=collection id="insertField" type="insert" omitFields="subform"}}-->
+{{HLog collection}}
+  {{#autoForm collection=collection id=id type=type doc=doc omitFields="subform"}}
+    {{#each afFieldNames}}
+      {{#unless HEqual this 'ontologized'}}
+        {{#unless HEqual this 'svgurl'}}
+          {{> afQuickField name=this options="auto"}}
+        {{else}}
+          {{> afQuickField name=this options=svgurloptions}}
+        {{/unless}}
+      {{else}}
+          {{> afQuickField name=this options=ontologizedoptions}}
+      {{/unless}}
+    {{/each}}
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+  {{/autoForm}}
+
+</template>
+
+<template name="editField">
+  <!--{{> quickForm collection=collection id="updateField" type="update" doc=doc}}-->
+  {{> addField collection=collection id="updateField" type="update" doc=doc}}
+
+</template>
+
+<template name="Fields">
+</template>
+
+
+
+<template name="SubFormTable">
+  <td>{{_id}}</td>
+  <td>{{concept}}</td>
+  <td>{{form}}</td>
+  <td>{{ordering}}</td>
+  <td>{{schema}}</td>
+  <td>
+    <a href="subform/{{_id}}" target="_blank"><img class="small" src="images/goto.svg"></a>
+    <button class="showSubFormData" data-id={{_id}}>data</button>
+    <button class="showSubFormFields" data-id={{_id}}>fields</button>
+  </td>
+  <td>
+    <button class="addField" data-id={{_id}}>+ Field</button>
+  </td>
+</template>
+
+<template name="FieldTable">
+  <td>{{name}}</td>
+  <td>{{type}}</td>
+  <td>{{label}}</td>
+  <td>{{subform}}</td>
+  <button class="editField" data-id={{_id}}>#</button>
+</template>
+
+<template name="FormFields">
+  <div id="addFormField"></div>
+</template>
+
+<template name="FormField">
+</template>
+
+
+<template name="Form">
+  <div id="showForm"></div>
+</template>
+
+<template name="SubForms">
+</template>
+
+<template name="SubForm">
+  <div id="showSubForm"></div>
+</template>
+
+<template name="SubFormLive">
+  <h1 id="SubFormTitle" style="margin: auto;margin-left: 40%;">Fracture Summary</h1><br><br><br>
+
+  {{#autoForm collection=collection id="subFormLiveInsert" type=type doc=doc omitFields="meta"}}
+    {{#each afFieldNames}}
+      {{#unless HSchemaContains ../../schema this 'concepted'}}
+        {{> afQuickField name=this options="auto"}}
+      {{/unless}}
+    {{/each}}
+    <div id="ontoConcepted"></div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  {{/autoForm}}
+
+</template>
+
+<template name="SubFormDataOperations">
+  <button class="editRecord">edit</button>
+  <button class="delRecord">del</button>
+</template>
+
+<template name="SubFormData">
+  <div id="SubFormData"></div>
+  <button class="insertRecord">+</button>
+</template>

@@ -1,0 +1,106 @@
+<template name="sharedItem">
+  <select class="sharedItem">
+    <option value="">...</option>
+    {{#each value}}
+      <option value="{{value}}">{{label}}</option>
+    {{/each}}
+  </select>
+</template>
+
+<template name="WiredLabel">
+  <label id="{{domid}}" class="WiredClass WiredLabel">{{label}}</label>
+</template>
+
+<template name="WiredInput">
+  <label>{{label}}
+    <input id="{{domid}}" type="{{type}}" class="WiredClass WiredInput WiredInput{{type}}" style="width: 98%;height: 30px;">
+  </label>
+</template>
+
+<template name="WiredTextarea">
+  <label>{{label}}
+    <textarea id="{{domid}}" type="text" class="WiredClass WiredTextarea" rows="4" cols="100"></textarea>
+  </label>
+</template>
+
+
+<template name="WiredSelect">
+  {{#unless HEmpty option}}
+    <label>{{label}}
+      <select id="{{domid}}" class="WiredClass WiredSelect">
+        {{#if placeholder}}
+          <option value='{{placeholdervalue}}'>{{placeholder}}</option>
+        {{/if}}
+        {{#each keys}}
+          {{#if HEqual this ../active}}
+            <option selected value={{this}}>{{value ../option this}}</option>
+          {{else}}
+            <option value={{this}}>{{value ../option this}}</option>
+          {{/if}}
+        {{/each}}
+      </select>
+    </label>
+  {{/unless}}
+</template>
+
+
+<template name="WiredButton">
+  <button id="{{domid}}" class="WiredClass WiredButton">{{label}}</button>
+</template>
+
+<template name="WiredDiv">
+  <label>{{label}}
+    <div id="{{domid}}" class="WiredClass WiredDiv">
+      {{{content}}}
+    </div>
+  </label>
+</template>
+
+<template name="WiredDivEditable">
+  <label>{{label}}
+    <div id="{{domid}}" contenteditable="{{editable}}" class="WiredClass WiredDivEditable" style="width: 98%"></div>
+  </label>
+</template>
+
+<template name="WiredTag">
+  <label>{{label}}
+    <div id="{{domid}}" contenteditable="true" class="WiredClass WiredDivEditable WiredTag">
+      {{#each option}}
+        <span data-value="{{value}}">{{label}}</span><button data-value="{{value}}">x</button>
+      {{/each}}
+    </div>
+  </label>
+</template>
+
+
+<template name="WiredTag2">
+  <div id="{{domid}}" class="WiredClass WiredTag2">
+    <span id="{{domid}}_span">{{label}}</span>
+    <img id="{{domid}}_img" src="http://docs.escenic.com/ece-content-studio-guide/5.6/graphics/delete-button.png">
+  </div>
+</template>
+
+<template name="WiredRecord">
+  {{parse wiredrecordvalue}}
+</template>
+
+<template name="WiredTable">
+  <table id="{{domid}}" class="WiredClass WiredTable">
+    <thead>
+      <tr>
+        {{#each header}}
+          <th>{{this}}</th>
+        {{/each}}
+      </tr>
+    </thead>
+    <tbody>
+      {{#each item}}
+        <tr>
+          {{#each ../field}}
+            <td>{{> Template.dynamic template=template data=data}}</td>
+          {{/each}}
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</template>

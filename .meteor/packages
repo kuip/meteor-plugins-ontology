@@ -1,0 +1,32 @@
+# Meteor packages used by this project, one per line.
+# Check this file (and the other files in this directory) into your repository.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+meteor-base
+mobile-experience
+mongo
+blaze-html-templates
+session
+jquery
+tracker
+standard-minifiers
+es5-shim
+ecmascript
+insecure
+kadira:flow-router
+kadira:blaze-layout
+reactive-var
+aldeed:collection2
+underscore
+meteorhacks:fast-render
+u2622:persistent-session
+accounts-ui
+accounts-password
+loredanacirstea:plugin-wrapper
+loredanacirstea:plugin-class
+loredanacirstea:plugin-chat
+loredanacirstea:plugin-ontology
+loredanacirstea:plugin-role
+loredanacirstea:plugin-form
+loredanacirstea:plugin-devi
