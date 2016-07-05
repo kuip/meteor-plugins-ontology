@@ -1,5 +1,18 @@
-# Meteor Plugins
-Plugins architecture for Meteor. Permits changing Meteor packages from a web interface.
+# Meteor Plugins for Apps based on Controlled Vocabularies
++ Plugins architecture for Meteor. Permits changing Meteor packages from a web interface.
+
+## General Specs
+
+![General UML] (http://cdn.rawgit.com/kuip/meteor-plugins-ontology/master/public/docs/GeneralUML.svg)
+
+![WiredSequence] (http://cdn.rawgit.com/kuip/meteor-plugins-ontology/master/public/docs/WiredSequence.svg)
+
+![Forms1] (http://cdn.rawgit.com/kuip/meteor-plugins-ontology/master/public/docs/Forms1UML.svg)
+
+![Forms2] (http://cdn.rawgit.com/kuip/meteor-plugins-ontology/master/public/docs/Forms2UML.svg)
+
+
+Extended https://github.com/kuip/meteor-plugins :
 
 ## Screenshot
 
