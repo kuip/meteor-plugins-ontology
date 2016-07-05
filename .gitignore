@@ -1,2 +1,8 @@
 node_modules/
-public/
+public/node_modules
+public/bower_components
+public/anato
+public/images
+public/misc
+public/info.txt
+public/html.html
